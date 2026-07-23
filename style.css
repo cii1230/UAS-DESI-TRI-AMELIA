@@ -1,19 +1,19 @@
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
+html, body{
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body{
-    background-image: url('bakar.jpg');
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+
+    /* Gambar latar */
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('bakar.jpg');
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,8 +24,16 @@ body{
 
 header{
     width:100%;
-    background:#fff;
-    padding:0px 0 5px;
+    background: transparent; /* menghapus latar putih */
+    padding:0;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background: transparent; /* navbar transparan */
 }
 
 /*================ NAVBAR =================*/
@@ -59,10 +67,14 @@ nav ul li{
 }
 
 nav ul li a{
-    color:black;
+    color: black; /* tulisan menu tetap hitam */
     text-decoration:none;
     font-weight:500;
-    transition:.3s;
+}
+
+.logo h1,
+.logo h2{
+    color: black; /* logo tetap hitam */
 }
 
 nav ul li a:hover{
@@ -72,13 +84,47 @@ nav ul li a:hover{
 /*================ HERO =================*/
 
 .hero{
-    height:80vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    color:white;
-    text-align:center;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start; /* posisi mulai dari atas */
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    padding-top: 120px; /* jarak dari atas */
+}
+
+.hero h1{
+    font-size: 56px;
+    font-weight: bold;
+    line-height: 1.2; /* agar tulisan sejajar */
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero p{
+    font-size: 24px; /* tulisan deskripsi lebih besar */
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+.hero .btn{
+    margin-top: 60px; /* tombol pindah lebih ke bawah */
+    display: inline-block;
+    padding: 18px 45px;
+    background: pink;
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.hero .btn:hover{
+    background: #e91e63;
 }
 
 .label{
@@ -287,49 +333,76 @@ section h2{
 
 .about{
     width: 100%;
-    padding: 70px 10%;
-    background: #ffc0cb;
-}
-
-.about h2{
-    text-align: center;
-    font-size: 36px;
-    color: #000;
-    margin-bottom: 40px;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .about-container{
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column; /* gambar di atas, teks di bawah */
+    align-items: center;
+    gap: 30px;
+}
+
+.about-image{
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
 }
 
 .about-image img{
-    width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    width: 100%;
+    max-width: 350px; /* ukuran gambar pas untuk HP */
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .about-text{
-    max-width: 600px;
-    text-align: justify;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    color: #000; /* tulisan hitam agar jelas */
+}
+
+.about-text h2{
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.about-text p{
+    font-size: 18px;
     line-height: 1.8;
+    margin-bottom: 20px;
     color: #333;
 }
 
 .about-text h3{
-    color: #e91e63;
-    margin-top: 15px;
+    font-size: 28px;
+    margin: 30px 0 15px;
+    color: #ff4d88;
 }
 
 .about-text ul{
-    padding-left: 20px;
+    list-style: none;
+    padding: 0;
 }
 
-.about-text li{
-    margin-bottom: 10px;
+.about-text p,
+.about-text ul li{
+    color: white; /* semua teks deskripsi menjadi putih */
+}
+
+/* Tulisan Bakso Bakar Ihsan Idol menjadi hitam pekat */
+.about-text p strong{
+    color: #000;
+    font-weight: 700;
 }
 
 /*================ SARAN & KRITIK =================*/
@@ -492,4 +565,14 @@ nav ul{
 
 }
 
-</style>
+/* Warna tulisan header putih untuk semua halaman selain Home */
+header .logo h1,
+header .logo h2,
+header nav ul li a{
+    color: white;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active{
+    color: #ffd1dc; /* pink muda saat hover atau halaman aktif */
+    }
