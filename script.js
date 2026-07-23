@@ -1,35 +1,18 @@
 //=============================
-// Smooth Scroll
-//=============================
-
-document.querySelectorAll('nav a').forEach(link => {
-
-    link.addEventListener('click', function(e){
-
-        e.preventDefault();
-
-        const tujuan = document.querySelector(this.getAttribute('href'));
-
-        tujuan.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-    });
-
-});
-
-
-//=============================
 // Tombol Pesan Sekarang
 //=============================
 
 const btnPesan = document.querySelector(".pesan-sekarang .btn");
 
-btnPesan.addEventListener("click", function(){
+if (btnPesan) {
 
-    alert("Silakan hubungi kami melalui nomor WhatsApp untuk melakukan pemesanan 😊");
+    btnPesan.addEventListener("click", function(){
 
-});
+        alert("Silakan hubungi kami melalui nomor WhatsApp untuk melakukan pemesanan 😊");
+
+    });
+
+}
 
 
 //=============================
@@ -38,31 +21,29 @@ btnPesan.addEventListener("click", function(){
 
 const form = document.querySelector(".form-saran");
 
-form.addEventListener("submit", function(e){
+if (form) {
 
-    e.preventDefault();
+    form.addEventListener("submit", function(e){
 
-    const nama = document.querySelector('input[type="text"]').value;
-    const email = document.querySelector('input[type="email"]').value;
-    const pesan = document.querySelector("textarea").value;
+        e.preventDefault();
 
-    if(nama=="" || pesan==""){
+        const nama = document.querySelector('input[type="text"]').value;
+        const pesan = document.querySelector("textarea").value;
 
-        alert("Nama dan Saran wajib diisi!");
+        if(nama=="" || pesan==""){
 
-        return;
+            alert("Nama dan Saran wajib diisi!");
+            return;
 
-    }
+        }
 
-    alert(
-        "Terima kasih, " +
-        nama +
-        " 😊\n\nSaran Anda berhasil dikirim."
-    );
+        alert("Terima kasih, " + nama + " 😊\n\nSaran Anda berhasil dikirim.");
 
-    form.reset();
+        form.reset();
 
-});
+    });
+
+}
 
 
 //=============================
